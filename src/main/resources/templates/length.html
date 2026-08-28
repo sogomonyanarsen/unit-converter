@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<form action="/length" method="POST">
+    <input type="number" name="convertable" placeholder="Enter value">
+    <input type="text" name="startUnit" placeholder="From (e.g., foot)">
+    <input type="text" name="targetUnit" placeholder="To (e.g., centimeter)">
+    <button type="submit">Convert</button>
+</form>
+
+<h2 th:text="${msg}"></h2>
+
+</body>
+</html>
