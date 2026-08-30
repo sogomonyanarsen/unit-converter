@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Unit Converter - Weight</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<h1>Unit Converter</h1>
+
+<div class="nav-links">
+    <a href="/length">Length</a>
+    <a href="/weight" class="active">Weight</a>
+    <a href="/temperature">Temperature</a>
+</div>
+
+<form action="/weight" method="POST">
+
+    <div class="form-group">
+        <label>Enter the weight to convert</label>
+        <input type="number" step="any" name="convertable" required/>
+    </div>
+
+    <div class="form-group">
+        <label>Unit to Convert from</label>
+        <select name="startUnit" required>
+            <option value="milligram">Milligram</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="ounce">Ounce</option>
+            <option value="pound">Pound</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Unit to Convert to</label>
+        <select name="targetUnit" required>
+            <option value="milligram">Milligram</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="ounce">Ounce</option>
+            <option value="pound">Pound</option>
+        </select>
+    </div>
+
+    <button type="submit">Convert</button>
+</form>
+
+<div class="result-section" th:if="${msg != null}">
+    <h3>Result of your calculation</h3>
+    <h2 th:text="${msg}"></h2>
+    <a href="/weight">
+        <button type="button">Reset</button>
+    </a>
+</div>
+
+</body>
+</html>

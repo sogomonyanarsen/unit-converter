@@ -22,6 +22,16 @@ public class WebController {
         return "length";
     }
 
+    @GetMapping("/temperature")
+    public String temperature() {
+        return "temperature";
+    }
+
+    @GetMapping("/weight")
+    public String weight() {
+        return "weight";
+    }
+
     @PostMapping("/length")
     public String processLengthForm(@ModelAttribute ConversionRequest conversionRequest, Model model) {
         conversionRequest.setMode("length");
@@ -31,4 +41,19 @@ public class WebController {
         return "length";
     }
 
+    @PostMapping("/temperature")
+    public String processTempForm(@ModelAttribute ConversionRequest conversionRequest, Model model) {
+        conversionRequest.setMode("temperature");
+        ConversionResult result = conversionService.convert(conversionRequest);
+        model.addAttribute("msg", result.getResult());
+        return "temperature";
+    }
+
+    @PostMapping("/weight")
+    public String processWeightForm(@ModelAttribute ConversionRequest conversionRequest, Model model) {
+        conversionRequest.setMode("weight");
+        ConversionResult result = conversionService.convert(conversionRequest);
+        model.addAttribute("msg", result.getResult());
+        return "weight";
+    }
 }

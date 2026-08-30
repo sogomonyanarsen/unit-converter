@@ -1,22 +1,66 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Unit Converter - Length</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" href="">
 </head>
 <body>
 
+<h1>Unit Converter</h1>
+
+<div class="nav-links">
+    <a href="/length" class="active">Length</a>
+    <a href="/weight">Weight</a>
+    <a href="/temperature">Temperature</a>
+</div>
+
 <form action="/length" method="POST">
-    <input type="number" name="convertable" placeholder="Enter value">
-    <input type="text" name="startUnit" placeholder="From (e.g., foot)">
-    <input type="text" name="targetUnit" placeholder="To (e.g., centimeter)">
+
+    <div class="form-group">
+        <label>Enter the length to convert</label>
+        <input type="number" step="any" name="convertable" required/>
+    </div>
+
+    <div class="form-group">
+        <label>Unit to Convert from</label>
+        <select name="startUnit" required>
+            <option value="millimeter">Millimeter</option>
+            <option value="centimeter">Centimeter</option>
+            <option value="meter">Meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="inch">Inch</option>
+            <option value="foot">Foot</option>
+            <option value="yard">Yard</option>
+            <option value="mile">Mile</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Unit to Convert to</label>
+        <select name="targetUnit" required>
+            <option value="millimeter">Millimeter</option>
+            <option value="centimeter">Centimeter</option>
+            <option value="meter">Meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="inch">Inch</option>
+            <option value="foot">Foot</option>
+            <option value="yard">Yard</option>
+            <option value="mile">Mile</option>
+        </select>
+    </div>
+
     <button type="submit">Convert</button>
 </form>
 
-<h2 th:text="${msg}"></h2>
+<div class="result-section" th:if="${msg != null}">
+    <h3>Result of your calculation</h3>
+
+    <h2 th:text="${msg}"></h2>
+
+    <a href="/length">
+        <button type="button">Reset</button>
+    </a>
+</div>
 
 </body>
 </html>
